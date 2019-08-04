@@ -3,26 +3,33 @@ import { resolvers } from './resolvers';
 
 const typeDefs = `
   type Query {
-    hello: String
     greet(name: String!): String
-    tasks: [Task]
-  },
+    users: [User]
+  }
 
-  type Task {
+  type User {
     _id: ID
-    title: String!
-    description: String!
-    number: Int
+    name: String!
+    lastName: String!
+    age: Int!
   }
 
   type Mutation {
-    createTask(input: taskInput): [Task]
+    createUser(input: userInput): User
+    updateUser(_id: ID, input: updateUserInput) : User
+    deleteUser(_id: ID): User
   }
 
-  input taskInput {
-    title: String!
-    description: String!
-    number: Int
+  input userInput {
+    name: String!
+    lastName: String!
+    age: Int!
+  }
+
+  input updateUserInput {
+    name: String
+    lastName: String
+    age: Int
   }
 `;
 
