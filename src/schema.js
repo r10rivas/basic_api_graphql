@@ -4,7 +4,25 @@ import { resolvers } from './resolvers';
 const typeDefs = `
   type Query {
     hello: String
-    greet(name: String): String
+    greet(name: String!): String
+    tasks: [Task]
+  },
+
+  type Task {
+    _id: ID
+    title: String!
+    description: String!
+    number: Int
+  }
+
+  type Mutation {
+    createTask(input: taskInput): [Task]
+  }
+
+  input taskInput {
+    title: String!
+    description: String!
+    number: Int
   }
 `;
 
